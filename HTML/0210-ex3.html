@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROW與COL練習3</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/mycss01.css">
+    <style>
+        .box01 {
+            height: 200px;
+            background-image: url("https://t4.ftcdn.net/jpg/00/78/08/93/360_F_78089331_Gg57V2EkQ566wPisVY08N2PYNs319UhF.jpg");
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .box02 {
+            height: 80px;
+            margin-top: 10px;
+            line-height: 80px;
+            background-color: var(--Testcolor08);
+        }
+
+        @media screen and (min-width: 768px) {
+            .box02{
+                width: 160px;
+                height: 160px;
+                line-height: 160px;
+            }
+        }
+
+        @media screen and (min-width: 992px) {
+            .box02{
+                border-radius: 50%;
+            }
+            .box02:hover{
+                background-color: rgb(196, 67, 189);
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            .box02{
+                width: 210px;
+                height: 210px;
+                line-height: 210px;
+                background-color: var(--Testcolor05);
+            }
+            .box02:hover{
+                background-color: rgb(146, 41, 76);
+            }
+        }
+
+        .box03 {
+            padding: 10px;
+            margin-top: 15px;
+            border: 5px solid var(--Testcolor02);
+            box-shadow: 2px 2px 6px 2px var(--Testcolor06);
+            border-radius: 12px;
+        }
+
+        .box03 .h3{
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-none d-sm-block">
+                <div class="box01"></div>
+            </div>
+        </div>
+        <div class="row title-02 text-center">
+            <div class="col-sm-6 col-md-3">
+                <div class="box02">選單01</div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="box02">選單02</div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="box02">選單03</div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="box02">選單04</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="box03 roller">
+                    <div class="roller_box-l">
+                        <button class="btn btn-dark">查看更多</button>
+                    </div>
+                    <img src="../images/fish.gif" class="img-fluid" alt="">
+                    <div class="h3 fw-400 text-center">旅遊景點001</div>
+                    <p>資料庫，足球委員會高興規模故意法規瀏覽次數裝置依據它的道路青年，一部一起領導教學台鐵三個目的無限重。</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="box03 roller">
+                    <div class="roller_box-r">
+                        <button class="btn btn-dark">查看更多</button>
+                    </div>
+                    <img src="../images/fish.gif" class="img-fluid" alt="">
+                    <div class="h3 fw-400 text-center">旅遊景點002</div>
+                    <p>資料庫，足球委員會高興規模故意法規瀏覽次數裝置依據它的道路青年，一部一起領導教學台鐵三個目的無限重。</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="box03 roller">
+                    <div class="roller_box-l">
+                        <button class="btn btn-dark">查看更多</button>
+                    </div>
+                    <img src="../images/fish.gif" class="img-fluid" alt="">
+                    <div class="h3 fw-400 text-center">旅遊景點003</div>
+                    <p>資料庫，足球委員會高興規模故意法規瀏覽次數裝置依據它的道路青年，一部一起領導教學台鐵三個目的無限重。</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="box03 roller">
+                    <div class="roller_box-r">
+                        <button class="btn btn-dark">查看更多</button>
+                    </div>
+                    <img src="../images/fish.gif" class="img-fluid" alt="">
+                    <div class="h3 fw-400 text-center">旅遊景點004</div>
+                    <p>資料庫，足球委員會高興規模故意法規瀏覽次數裝置依據它的道路青年，一部一起領導教學台鐵三個目的無限重。</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="box03 roller">
+                    <div class="roller_box-l">
+                        <button class="btn btn-dark">查看更多</button>
+                    </div>
+                    <img src="../images/fish.gif" class="img-fluid" alt="">
+                    <div class="h3 fw-400 text-center">旅遊景點005</div>
+                    <p>資料庫，足球委員會高興規模故意法規瀏覽次數裝置依據它的道路青年，一部一起領導教學台鐵三個目的無限重。</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="box03 roller">
+                    <div class="roller_box-r">
+                        <button class="btn btn-dark">查看更多</button>
+                    </div>
+                    <img src="../images/fish.gif" class="img-fluid" alt="">
+                    <div class="h3 fw-400 text-center">旅遊景點006</div>
+                    <p>資料庫，足球委員會高興規模故意法規瀏覽次數裝置依據它的道路青年，一部一起領導教學台鐵三個目的無限重。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-4.0.0.js"></script>
+</body>
+
+</html>

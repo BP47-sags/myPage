@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格練習</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/mycss01.css">
+    <link rel="stylesheet" href="../css/table-rwd.css">
+    <style>
+
+        #mytitle{
+            font-size: 36px;
+        }
+
+        .strikethrough td {
+            color: #888;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="title-01 text-center" id="mytitle">表格 - opendata應用</div>
+    <div class="container">
+        <div class="title-03">資料來源: 台北市YouBike即時JSON</div>
+        <table class="table table-hover table-rwd">
+            <thead class="table-primary">
+                <tr>
+                    <th>站點名稱</th>
+                    <th>站點位置</th>
+                    <th>可借數量</th>
+                    <th>可還數量</th>
+                    <th>總車柱</th>
+                    <th>站點地區</th>
+                </tr>
+            </thead>
+            <tbody id="mybody">
+                <tr>
+                    <td data-th="站點名稱"><span>456</span></td>
+                    <td data-th="站點位置"><span>789</span></td>
+                    <td data-th="可借數量"><span>012</span></td>
+                    <td data-th="可還數量"><span>345</span></td>
+                    <td data-th="總車柱"><span>678</span></td>
+                    <td data-th="站點地區"><span>901</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-4.0.0.js"></script>
+    <script>
+
+        //主程式
+        $(function(){
+            $("#mytitle").html("YouBike2.0臺北市公共自行車即時資訊")
+            //串接opendata
+            $.ajax({
+                type: "GET",
+                url: "../js/json/youbike_immediate.json",
+                // url: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json",
+                dataType: "json",
+                success: showdata,
+                error: function(){
+                    console.log("連線錯誤")
+                }
+            });
+        });
+
+        function showdata(data){
+            // console.log(data);
+            $("#mybody").empty();
+            data.forEach(function(item){
+                // console.log(item.Name)
+                // console.log("地址: " + item.City + item.Town + item.Address);
+
+                let available_rent = item.available_rent_bikes == 0 ? `style="color: red;"` : "";
+
+                del_class = "";
+                del_note = ""
+                if (item.act == 0){
+                    del_class = `class="strikethrough"`;
+                    del_note = "(該站點已停用)"
+                }
+
+                let strHTML = `<tr ${del_class}>
+                    <td data-th="站點名稱"><span>${item.sna}${del_note}</span></td>
+                    <td data-th="站點位置"><span>${item.ar}</span></td>
+                    <td data-th="可借數量" ${available_rent}><span>${item.available_rent_bikes}</span></td>
+                    <td data-th="可還數量"><span>${item.available_return_bikes}</span></td>
+                    <td data-th="總車柱"><span>${item.Quantity}</span></td>
+                    <td data-th="站點地區"><span>${item.sarea}</span></td>
+                </tr>`;
+                $("#mybody").append(strHTML);
+            });
+        }
+
+    </script>
+</body>
+
+</html>
