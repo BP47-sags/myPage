@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>個人簡歷製作</title>
     <link rel="stylesheet" href="css/mycss01.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <style>
-
-        .section01{
-            height:100vh;
+        .section01 {
+            height: 100vh;
             position: relative;
             background-color: var(--Testcolor02);
         }
 
-        .section01 .box01{
+        .section01 .box01 {
             width: 150px;
             height: 150px;
             background-color: var(--Testcolor08);
@@ -25,7 +25,7 @@
             left: 0;
         }
 
-        .section01 .box02{
+        .section01 .box02 {
             width: 150px;
             height: 150px;
             background-color: var(--Testcolor05);
@@ -34,7 +34,7 @@
             right: 0;
         }
 
-        .section01 .box03{
+        .section01 .box03 {
             width: 150px;
             height: 150px;
             background-color: var(--Testcolor05);
@@ -43,7 +43,7 @@
             left: 0;
         }
 
-        .section01 .box04{
+        .section01 .box04 {
             width: 150px;
             height: 150px;
             background-color: var(--Testcolor08);
@@ -52,12 +52,12 @@
             right: 0;
         }
 
-        .bg-cover{
+        .bg-cover {
             background-position: center center;
             background-size: cover;
         }
 
-        .logo{
+        .logo {
             background-color: blue;
             position: absolute;
             top: 30px;
@@ -70,7 +70,7 @@
             background-position: 0 0; */
         }
 
-        .user_text{
+        .user_text {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -84,23 +84,16 @@
             font-weight: bolder;
         }
 
-        .user_text h1{
+        .user_text h1 {
             font-size: 72px;
             margin-bottom: 0;
         }
 
-        .user_text p{
+        .user_text p {
             font-size: 36px;
         }
 
-        .section02{
-            position: relative;
-            height: 360px;
-            margin-top: 30px;
-            font-size: 36px;
-        }
-
-        .section02 .box01{
+        .section02 .box01 {
             position: absolute;
             height: 320px;
             width: 320px;
@@ -113,7 +106,7 @@
             color: aliceblue;
         }
 
-        .section02 .box02{
+        .section02 .box02 {
             position: absolute;
             height: 320px;
             width: 320px;
@@ -126,7 +119,7 @@
             color: aliceblue;
         }
 
-        .section02 .box03{
+        .section02 .box03 {
             position: absolute;
             height: 320px;
             width: 320px;
@@ -139,30 +132,33 @@
             color: aliceblue;
         }
 
-        .section02 a{
+        .section02 a {
             background-color: rgba(0, 0, 0, 0.3);
             text-decoration: none;
             color: white;
         }
 
-        @media screen and (max-width:1024px){
-            .section01{
-            width: 100%;
-            }
-            .user_text{
-            top: 25%;
-            transform: translate(-50%, -10%);
-            }
-            .section02 .box01, .section02 .box02, .section02 .box03{
-                width: 180px;
-                height: 180px;
-                line-height: 120px;
-            }
+        .content_box {
+            margin-top: 15px;
+            padding: 10px;
+            box-shadow: 2px 2px 6px 2px var(--Testcolor06);
+            border-radius: 15px;
         }
 
+        @media screen and (max-width:1024px) {
+            .section01 {
+                width: 100%;
+            }
+
+            .user_text {
+                top: 25%;
+                transform: translate(-50%, -10%);
+            }
+        }
     </style>
 
 </head>
+
 <body>
 
     <div class="section01">
@@ -179,20 +175,23 @@
         </div>
     </div>
 
-    <div class="section02">
-        <div class="box01 bg-cover">
-            <p><a href="HTML/0205-practice.html" target="_blank">作品集1</a></p>
-        </div>
-        <div class="box02 bg-cover">
-            <p><a href="HTML/0210-ex3.html" target="_blank">作品集2</a></p>
-        </div>
-        <div class="box03 bg-cover">
-            <p><a href="HTML/0212-1.html" target="_blank">作品集3</a></p>
+    <div class="row">
+        <div class="col-md-6 col-lg-4 col-xl-3">
+            <div class="content_box roller">
+                <div class="roller_box-r">
+                    <a href="HTML/0205-practice.html" target="_blank"><button class="btn btn-dark">查看更多</button></a>
+                </div>
+                <div
+                    style="background-image: url('images/Croajiro.webp'); height: 160px; background-position: center center; background-size: cover; border-radius: 5px;">
+                </div>
+                <div class="h3 text-center fw-700">作品集1</div>
+            </div>
         </div>
     </div>
-    
-    <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="../js/jquery-4.0.0.js"></script>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
 
 </body>
+
 </html>
