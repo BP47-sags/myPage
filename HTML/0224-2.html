@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>時間軸排版</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/mycss01.css">
+
+    <style>
+        .pimg {
+            height: 260px;
+        }
+
+        .bg-cover {
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .timeline-section{
+            position: relative;
+        }
+
+        .timeline-section::before{
+            position: absolute;
+            content: "";
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: var(--Testcolor05);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container py-5">
+
+        <div class="timeline-section">
+
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="pimg bg-cover" style="background-image: url(../images/pokemon/1.png);"></div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <div class="h3">產品編號001</div>
+                        <p>休息接下來女士將其開展城市最初，還在這。</p>
+                        <p>休息接下來女士將其開展城市最初，還在這。</p>
+                        <p>休息接下來女士將其開展城市最初，還在這。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center flex-row-reverse">
+                <div class="col-md-6">
+                    <div class="pimg bg-cover" style="background-image: url(../images/pokemon/2.png);"></div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <div class="h3">產品編號002</div>
+                        <p>休息接下來女士將其開展城市最初，還在這。</p>
+                        <p>休息接下來女士將其開展城市最初，還在這。</p>
+                        <p>休息接下來女士將其開展城市最初，還在這。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="pimg bg-cover" style="background-image: url(../images/pokemon/3.png);"></div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <div class="h3">產品編號003</div>
+                        <p>休息接下來女士將其開展城市最初，還在這。</p>
+                        <p>休息接下來女士將其開展城市最初，還在這。</p>
+                        <p>休息接下來女士將其開展城市最初，還在這。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center flex-row-reverse">
+                <div class="col-md-6">
+                    <div class="pimg bg-cover" style="background-image: url(../images/pokemon/4.png);"></div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <div class="h3">產品編號004</div>
+                        <p>休息接下來女士將其開展城市最初，還在這。</p>
+                        <p>休息接下來女士將其開展城市最初，還在這。</p>
+                        <p>休息接下來女士將其開展城市最初，還在這。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-4.0.0.js"></script>
+</body>
+
+</html>
