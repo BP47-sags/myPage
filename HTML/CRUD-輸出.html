@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CRUD 專案練習-顯示商品</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/mycss01.css">
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="bg-light">
+        <div class="container pt-5">
+            <div class="row justify-content-center">
+                <div class="col md-10 mt-5">
+                    <div class="display-4 text-secondary fw-700 mb-3 text-center">顯示產品列表</div>
+                    <table class="table table-bordered shadow-sm">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>編號</th>
+                                <th>訂購者</th>
+                                <th>品名</th>
+                                <th>份量</th>
+                                <th>數量</th>
+                                <th>建檔時間</th>
+                                <th>欄位操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mybody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- updateModal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateModalLabel">產品更新</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">訂購者名稱</label>
+                        <input type="text" class="form-control" placeholder="字數1~8" id="username" name="username"
+                            disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">品名</label>
+                        <input type="text" class="form-control" placeholder="字數1~8" id="pname" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">份量(大/中/小)</label>
+                        <select name="" id="psize" class="form-select">
+                            <option value="大">大</option>
+                            <option value="中">中</option>
+                            <option value="小">小</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">數量(1~10)</label>
+                        <input type="number" min="1" max="10" value="1" class="form-control" id="pnum">
+                        <div class="valid-feedback">符合規定</div>
+                        <div class="invalid-feedback">不符合規定</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary" id="data_update_btn">儲存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-4.0.0.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
+
+    <script>
+
+        let productData = [];
+
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:3000/product",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    productData = data;
+                    renderTable(productData);
+                },
+                error: function () {
+                    Swal.fire({
+                        title: "讀取失敗",
+                        text: "api連結: http://localhost:3000/product",
+                        icon: "error"
+                    });
+                }
+            });
+
+            // 監聽欄位操作更新按鈕(資料來自ajax)
+            $(document).on("click", ".updateBtn", function () {
+                uid = $(this).data("id");
+                $("#username").val($(this).data("username"));
+                $("#pname").val($(this).data("pname"));
+                $("#psize").val($(this).data("psize"));
+                $("#pnum").val($(this).data("pnum"));
+            });
+
+            $("#pnum").blur(function () {
+                if ($(this).val() > 0 && $(this).val() < 11) {
+                    $(this).removeClass("is-invalid").addClass("is-valid");
+                    flag_pnum = true;
+                }
+                else {
+                    $(this).removeClass("is-valid").addClass("is-invalid");
+                    flag_pnum = false;
+                }
+            });
+
+            // 監聽modal更新按鈕
+            $("#data_update_btn").click(function () {
+
+                let pnum = $("#pnum").val();
+                let psize = $("#psize").val();
+
+                if (flag_pnum) {
+                    // 傳遞至後端api 執行更新行為PATCH
+                    $.ajax({
+                        type: "PATCH",
+                        url: `http://localhost:3000/product/${uid}`,
+                        contentType: "application/json",
+                        data: JSON.stringify({
+                            pNum: pnum,
+                            pSize: psize
+                        }),
+                        success: function (data) {
+                            console.log("更新成功");
+                            Swal.fire({
+                                title: "更新成功",
+                                showDenyButton: false,
+                                showCancelButton: false,
+                                icon: "success",
+                                confirmButtonText: "確認",
+                                denyButtonText: `Don't save`
+                            }).then((result) => {
+                                if (result.isConfirmed)
+                                    location.href = "0310-ex1.html"
+                            });
+                        },
+                        error: function () {
+                            Swal.fire({
+                                title: "更新失敗",
+                                text: "api連結: http://localhost:3000/product",
+                                icon: "error"
+                            });
+                        }
+                    });
+                }
+                else {
+                    Swal.fire({
+                        title: "欄位有誤",
+                        text: "產品數量應為1~10",
+                        icon: "error"
+                    });
+                }
+            });
+
+            // 監聽欄位操作刪除按鈕
+            $(document).on("click", ".deleteBtn", function () {
+
+                Swal.fire({
+                    title: "是否確認刪除",
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    icon: "question",
+                    confirmButtonText: "確認",
+                    denyButtonText: "取消"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        let delete_id = $(this).data("id");
+                        $.ajax({
+                            type: "DELETE",
+                            url: `http://localhost:3000/product/${delete_id}`,
+                            dataType: "json",
+                            success: function (data) {
+                                console.log(data);
+                                location.href = "0310-ex1.html";
+                            },
+                            error: function () {
+                                Swal.fire({
+                                    title: "刪除失敗",
+                                    text: "api連結: http://localhost:3000/product",
+                                    icon: "error"
+                                });
+                            }
+                        });
+                    }
+                    else if (result.isDenied) return;
+                });
+
+
+            });
+        });
+
+        function renderTable(data) {
+            data.forEach(function (item) {
+                let strHTML = `<tr>
+                                <td>${item.id}</td>
+                                <td>${item.userName}</td>
+                                <td>${item.pName}</td>
+                                <td>${item.pSize}</td>
+                                <td>${item.pNum}</td>
+                                <td>${item.createdAt}</td>
+                                <td>
+                                    <button 
+                                        class="btn btn-outline-warning updateBtn" data-bs-toggle="modal" 
+                                        data-bs-target="#updateModal"
+                                        data-id="${item.id}" 
+                                        data-username="${item.userName}" 
+                                        data-pname="${item.pName}" 
+                                        data-psize="${item.pSize}" 
+                                        data-pnum="${item.pNum}" 
+                                        data-createdAt="${item.createdAt}"
+                                        >更新</button>
+                                    <button 
+                                        class="btn btn-danger deleteBtn"
+                                        data-id="${item.id}"
+                                        >刪除</button>
+                                </td>
+                            </tr>`;
+                $("#mybody").append(strHTML);
+            });
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CRUD</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/mycss01.css">
+
+    <style>
+
+    </style>
+
+</head>
+
+<body class="bg-dark">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-700" href="#">CRUD</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">首頁</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            產品維護
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="0310-1.html">新增產品</a></li>
+                            <li><a class="dropdown-item" href="0310-ex1.html">產品列表</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center vh-100 align-items-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header text-bg-primary fw-700">新增產品</div>
+                    <div class="card-body">
+
+                        <div class="mb-3">
+                            <label for="" class="form-label">訂購者名稱</label>
+                            <input type="text" class="form-control" placeholder="字數1~8" id="username">
+                            <div class="valid-feedback" id="username-valid-feedback"></div>
+                            <div class="invalid-feedback" id="username-invalid-feedback">不符合字數規定</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="" class="form-label">品名</label>
+                            <input type="text" class="form-control" placeholder="字數1~8" id="pname">
+                            <div class="valid-feedback" id="pname-valid-feedback"></div>
+                            <div class="invalid-feedback" id="pname-invalid-feedback">不符合字數規定</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="" class="form-label">份量(大/中/小)</label>
+                            <select name="" id="psize" class="form-select is-invalid">
+                                <option value="--" class="text-center" disabled selected>--請選擇份量--</option>
+                                <option value="大">大</option>
+                                <option value="中">中</option>
+                                <option value="小">小</option>
+                            </select>
+                            <div class="valid-feedback">已選擇</div>
+                            <div class="invalid-feedback">必須選擇份量</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="" class="form-label">數量(1~10)</label>
+                            <input type="number" min="1" max="10" value="1" class="form-control" id="pnum">
+                            <div class="valid-feedback">符合數量規定</div>
+                            <div class="invalid-feedback">不符合數量規定</div>
+                        </div>
+
+                        <div class="text-center my-4">
+                            <button class="btn btn-outline-secondary">取消</button>
+                            <button class="btn btn-danger" id="ok_btn">確認</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-4.0.0.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
+
+    <script>
+        $(function () {
+
+            let flag_username = false;
+            let flag_pname = false;
+            let flag_psize = false;
+            let flag_pnum = false;
+
+            $("#username").blur(function () {
+                if ($(this).val().length > 0 && $(this).val().length < 9) {
+                    // $(this).removeClass("is-invalid").addClass("is-valid");
+                    // flag_username = true;
+                    let this_username = $(this).val();
+                    $.ajax({
+                        type: "GET",
+                        url: `http://localhost:3000/product?userName=${this_username}`,
+                        dataType: "json",
+                        success: function(data){
+                            if(data.length > 0){
+                                $("#username").removeClass("is-valid").addClass("is-invalid");
+                                $("#username-invalid-feedback").text("該訂購者名稱已存在，不可使用");
+                                flag_pname = false;
+                            }
+                            else{
+                                $("#username").removeClass("is-invalid").addClass("is-valid");
+                                $("#username-valid-feedback").text("該訂購者名稱不存在，可使用");
+                                flag_pname = true;
+                            }
+                        }
+                    });
+                }
+                else {
+                    $(this).removeClass("is-valid").addClass("is-invalid");
+                    flag_username = false;
+                }
+            });
+
+            $("#pname").blur(function () {
+                if ($(this).val().length > 0 && $(this).val().length < 9) {
+                    // $(this).removeClass("is-invalid").addClass("is-valid");
+                    // flag_pname = true;
+                    let this_pname = $(this).val();
+                    $.ajax({
+                        type: "GET",
+                        url: `http://localhost:3000/product?pName=${this_pname}`,
+                        dataType: "json",
+                        success: function(data){
+                            if(data.length > 0){
+                                $("#pname").removeClass("is-valid").addClass("is-invalid");
+                                $("#pname-invalid-feedback").text("該產品名稱已存在，不可使用");
+                                flag_pname = false;
+                            }
+                            else{
+                                $("#pname").removeClass("is-invalid").addClass("is-valid");
+                                $("#pname-valid-feedback").text("該產品名稱不存在，可使用");
+                                flag_pname = true;
+                            }
+                        }
+                    });
+                }
+                else {
+                    $(this).removeClass("is-valid").addClass("is-invalid");
+                    flag_pname = false;
+                }
+            });
+
+            $("#psize").change(function () {
+                if ($(this).val() == "--") {
+                    $(this).removeClass("is-valid").addClass("is-invalid");
+                    flag_psize = false;
+                }
+                else{
+                    $(this).removeClass("is-invalid").addClass("is-valid");
+                    flag_psize = true;
+                }
+            });
+
+            $("#pnum").blur(function () {
+                if ($(this).val() > 0 && $(this).val() < 11) {
+                    $(this).removeClass("is-invalid").addClass("is-valid");
+                    flag_pnum = true;
+                }
+                else {
+                    $(this).removeClass("is-valid").addClass("is-invalid");
+                    flag_pnum = false;
+                }
+            });
+
+
+            $("#ok_btn").click(function () {
+                if (flag_username && flag_pname && flag_pnum) {
+
+                    // 轉成JSON格式
+                    let jsonData = {
+                        userName: $("#username").val(),
+                        pName: $("#pname").val(),
+                        pSize: $("#psize").val(),
+                        pNum: $("#pnum").val(),
+                        createdAt: new Date().toLocaleString()
+                    };
+                    // console.log(JSON.stringify(jsonData));
+
+                    // 傳遞至後端API
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:3000/product",
+                        contentType: "application/json",
+                        data: JSON.stringify(jsonData),
+                        success: function (data) {
+                            Swal.fire({
+                                title: "新增成功",
+                                showDenyButton: false,
+                                showCancelButton: false,
+                                icon: "success",
+                                confirmButtonText: "確認",
+                                denyButtonText: `Don't save`
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    $("#username").val("").blur();
+                                    $("#pname").val("").blur();
+                                    $("#psize").val("大");
+                                    $("#pnum").val("1").blur();
+                                }
+                            });
+                        },
+                        error: function () {
+                            Swal.fire({
+                                title: "新增失敗",
+                                text: "api連結: http://localhost:3000/product",
+                                icon: "error"
+                            })
+                        }
+                    });
+                }
+                else {
+                    Swal.fire({
+                        title: "欄位有誤，請修正",
+                        showDenyButton: false,
+                        showCancelButton: false,
+                        icon: "error",
+                        confirmButtonText: "確認",
+                        denyButtonText: `Don't save`
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            return;
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
