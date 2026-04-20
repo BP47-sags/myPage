@@ -484,9 +484,9 @@
                 <div class="row">
                     <div class="col-md-8 p-3 m-5 bg-secondary opacity-75 text-white rounded-3 shadow-lg">
                         <small class="text-bg-danger badge">加入我們</small>
-                        <div class="h2 fw-700 text-white">XX人員一名</div>
-                        <p>薪資待遇: OOOOO/月</p>
-                        <p>工作內容: 怪物諮詢，判斷僅供堅持，明確運行金融例如看法鑒定應用再也新臺幣兩位停止圍繞常見。</p>
+                        <div class="h2 fw-700 text-white">行銷人員一名</div>
+                        <p>薪資待遇: 33000/月</p>
+                        <p>工作內容: 負責品牌推廣、社群經營與數據分析，擬定創意策略，並能精準觀測市場趨勢以提升轉換率。</p>
                         <a href="#" class="btn btn-danger w-100">詳細內容</a>
                     </div>
                 </div>
@@ -495,9 +495,9 @@
                 <div class="row">
                     <div class="col-md-8 p-3 m-5 bg-secondary opacity-75 text-white rounded-3 shadow-lg">
                         <small class="text-bg-danger badge">加入我們</small>
-                        <div class="h2 fw-700 text-white">YY人員一名</div>
-                        <p>薪資待遇: ooooo/月</p>
-                        <p>工作內容: 體驗清晰搜尋麻煩看到上一頁，投訴四個忍不住剛才美麗不斷你不寶貝電池主板，預期獨特鼓勵，見。</p>
+                        <div class="h2 fw-700 text-white">資訊人員一名</div>
+                        <p>薪資待遇: 35000/月</p>
+                        <p>工作內容: 負責伺服器維護、資安監控及系統排錯，確保網站穩定運行並優化效能。</p>
                         <a href="#" class="btn btn-danger w-100">詳細內容</a>
                     </div>
                 </div>
@@ -508,7 +508,7 @@
     <section id="S12">
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a href="#" class="nav-link disabled fw-700 text-dark">POWER BY XXX 2026.04.14</a>
+                <a href="#" class="nav-link disabled fw-700 text-dark">POWER BY KenZ 2026.04</a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">友站01</a>
@@ -612,25 +612,17 @@
 
         const myCarousel = document.getElementById('carouselExampleCaptions');
 
-        // 當輪播「即將切換」時觸發
         myCarousel.addEventListener('slide.bs.carousel', function (e) {
-            // 找出即將顯示的那一張 (e.relatedTarget)
             const activeCaptionElements = e.relatedTarget.querySelectorAll('.animate__animated');
-
-            // 先移除動畫類別，確保下次可以重新觸發
             activeCaptionElements.forEach(el => {
                 el.classList.remove('animate__flipInX');
             });
         });
 
-        // 當輪播「切換完成」後觸發
         myCarousel.addEventListener('slid.bs.carousel', function (e) {
-            // 找出當前顯示的那一張
             const activeCaptionElements = e.currentTarget.querySelector('.carousel-item.active').querySelectorAll('.animate__animated');
 
-            // 重新加上動畫類別
             activeCaptionElements.forEach(el => {
-                // 強制重繪 (Reflow) 讓動畫能再次執行
                 void el.offsetWidth;
                 el.classList.add('animate__flipInX');
             });
@@ -644,12 +636,10 @@
 
         $("#r-modal-username").blur(function () {
             if ($(this).val().length > 5 && $(this).val().length < 11) {
-                // 符合規定
                 $(this).removeClass("is-invalid").addClass("is-valid");
                 flag_username = true;
             }
             else {
-                // 不符合規定
                 $(this).removeClass("is-valid").addClass("is-invalid");
                 flag_username = false;
             }
@@ -661,12 +651,10 @@
             flag_repassword = false;
 
             if ($(this).val().length > 7 && $(this).val().length < 17) {
-                // 符合規定
                 $(this).removeClass("is-invalid").addClass("is-valid");
                 flag_password = true;
             }
             else {
-                // 不符合規定
                 $(this).removeClass("is-valid").addClass("is-invalid");
                 flag_password = false;
             }
@@ -674,12 +662,10 @@
 
         $("#r-modal-repassword").blur(function () {
             if ($(this).val() == $("#r-modal-password").val() && $(this).val() != "") {
-                // 符合規定
                 $(this).removeClass("is-invalid").addClass("is-valid");
                 flag_repassword = true;
             }
             else {
-                // 不符合規定
                 $(this).removeClass("is-valid").addClass("is-invalid");
                 flag_repassword = false;
             }
@@ -756,14 +742,18 @@
                 dataType: 'json',
                 success: function (data) {
                     console.log(data.results);
+                    let count = 0;
+                    let jobs = ["資訊人員", "行銷人員"];
+                    let works = ["網站維護", "社群經營", "資料庫管理", "行銷計畫"]
                     data.results.forEach(function (item) {
                         let strHTML = `<div class="col-sm-6 col-xl-3 mt-3">
                                         <div class="d-flex">
                                         <img src="${item.picture.large}" class="s8-userimg me-4" alt=""><div>
                                         <div class="h2">${item.name.title}${item.name.first}</div>
-                                        <p class="h5">稱呼: XXXX</p>
-                                        <p class="h5">專項: YYYYYYYY</p>
+                                        <p class="h5">稱呼: ${jobs[count%2]}</p>
+                                        <p class="h5">專項: ${works[count%4]}</p>
                                         </div></div></div>`;
+                        count += 1;
                         $("#s8-userList").append(strHTML);
                     })
                 }
