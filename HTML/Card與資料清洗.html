@@ -21,6 +21,24 @@
         .tag:hover {
             text-decoration: underline;
         }
+
+        @media (max-width: 768px) {
+            .tag {
+                flex: 0 0 30%;
+                text-align: center;
+                margin: 10px 0 !important;
+                font-size: 24px !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .tag {
+                flex: 0 0 auto;
+                /* 寬度自動 */
+                margin: 0 15px !important;
+            }
+        }
+
     </style>
 
 </head>
@@ -65,8 +83,10 @@
 
         <div class="row mt-4">
             <div class="col-12 text-center">
-                <h5>D3-Cloud 熱門關鍵字 (SVG 渲染)</h5>
-                <div id="d3_wordcloud" style="width: 100%; height: 80px; background: #f8f9fa;"></div>
+                <h5>熱門關鍵字</h5>
+                <div id="d3_wordcloud" class="d-flex flex-wrap justify-content-center align-items-center"
+                    style="width: 100%; min-height: 80px; background: #f8f9fa;">
+                </div>
             </div>
         </div>
 
@@ -125,7 +145,6 @@
                 .attr("class", "tag")
                 .style("font-size", d => `${d.size}px`)
                 .style("color", (d, i) => fill(i))
-                .style("margin", "0 10px") // 關鍵字之間的間距
                 .style("font-family", "Microsoft JhengHei")
                 .style("font-weight", "bold")
                 .style("cursor", "pointer")
