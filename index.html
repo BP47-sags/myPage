@@ -5,109 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>個人簡歷製作</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/mycss01.css">
+    <title>官網排版集合</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/mycss01.css">
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="../css/animate.min.css">
 
     <style>
-        .section01 {
-            height: 100vh;
-            position: relative;
-            background-color: var(--Testcolor02);
-        }
-
-        .section01 .box01 {
-            width: 150px;
-            height: 150px;
-            background-color: var(--Testcolor08);
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .section01 .box02 {
-            width: 150px;
-            height: 150px;
-            background-color: var(--Testcolor05);
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-
-        .section01 .box03 {
-            width: 150px;
-            height: 150px;
-            background-color: var(--Testcolor05);
-            position: absolute;
-            bottom: 0;
-            left: 0;
-        }
-
-        .section01 .box04 {
-            width: 150px;
-            height: 150px;
-            background-color: var(--Testcolor08);
-            position: absolute;
-            bottom: 0;
-            right: 0;
-        }
-
         .bg-cover {
             background-position: center center;
             background-size: cover;
         }
 
-        .logo {
-            background-color: blue;
-            position: absolute;
-            top: 30px;
-            bottom: 30px;
-            left: 30px;
-            right: 30px;
-            background-image: url(images/palworld.jpg);
-            background-attachment: fixed;
-            /* background-size: cover;
-            background-position: 0 0; */
+        .s5-timeline-section {
+            position: relative;
         }
 
-        .user_text {
+        .s5-timeline-section::before {
             position: absolute;
-            top: 50%;
+            content: "";
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background-color: rgb(86, 16, 151);
             left: 50%;
-            transform: translate(-50%, 50%);
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: rgb(72, 121, 255);
-            padding: 20px;
+            transform: translateX(-50%);
+        }
+
+        .s5-timeline-section-pointer {
+            position: relative;
+        }
+
+        .s5-timeline-section-pointer::before {
+            position: absolute;
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-color: rgb(187, 182, 235);
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid rgb(75, 60, 204);
+            border-radius: 50%;
+        }
+
+        .s5-timeline-section-pointer:hover::before {
+            width: 30px;
+            height: 30px;
+        }
+
+        .s8-userimg {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            transition: border-radius 1s, transform 1s
+        }
+
+        .s8-userimg:hover {
             border-radius: 20px;
-            box-shadow: 1px 1px 2px 1px #FFF;
-            font-weight: bolder;
+            box-shadow: 2px 2px 2px 2px #ccc;
+            transform: scale(1.1);
         }
 
-        .user_text h1 {
-            font-size: 72px;
-            margin-bottom: 0;
-        }
+        @media screen and (max-width: 768px) {
 
-        .user_text p {
-            font-size: 36px;
-        }
-
-        .content_box {
-            margin-top: 15px;
-            padding: 10px;
-            box-shadow: 2px 2px 6px 2px var(--Testcolor06);
-            border-radius: 15px;
-        }
-
-        @media screen and (max-width:1024px) {
-            .section01 {
-                width: 100%;
-            }
-
-            .user_text {
-                top: 25%;
-                transform: translate(-50%, -10%);
+            .S7-text,
+            .S9-text {
+                z-index: 100;
+                background-color: rgba(0, 0, 0, 0.5);
+                color: aliceblue;
+                padding: 20px;
+                margin: 15px;
+                border-radius: 15px;
             }
         }
     </style>
@@ -116,58 +85,663 @@
 
 <body>
 
-    <div class="section01">
-        <div class="box01"></div>
-        <div class="box02"></div>
-        <div class="box03"></div>
-        <div class="box04"></div>
-        <div class="logo bg-cover"></div>
-        <div class="user_text">
-            <div class="title-01">Huang Po Yan</div>
-            <div class="title-02">精益求精</div>
-            <p class="title-03">個人敘述(還沒想到)</p>
+    <!-- S1 -->
+    <section id="S1" class="bg-dark">
+        <div class="container">
+            <div class="text-end py-2">
+                <a href="#" class="text-decoration-none">
+                    <i class="fa-brands fa-discord fa-2x"></i>
+                </a>
+                <a href="#" class="text-decoration-none">
+                    <i class="fa-brands fa-twitter fa-2x"></i>
+                </a>
+                <a href="#" class="text-decoration-none">
+                    <i class="fa-brands fa-pixiv fa-2x"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- S2 -->
+    <section id="S2">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <i class="fa-solid fa-palette fa-3x" style="color: rgb(132, 85, 255);"></i>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link fw-900 text-primary active" aria-current="page" href="#">
+                                    <i class="fa-solid fa-house text-primary"></i>
+                                    首頁
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-warning" href="#">
+                                    <i class="fa-solid fa-info text-warning"></i>
+                                    關於我們
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    服務項目
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">項目1</a></li>
+                                    <li><a class="dropdown-item" href="#">項目2</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div>
+                            <button class="btn btn-outline-warning" data-bs-toggle="modal"
+                                data-bs-target="#registerModal">註冊</button>
+                            <button class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#loginModal">登入</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <!-- S3 -->
+    <section id="S3">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active bg-cover"
+                    style="background-image: url(../images/scape/1.jpg); height: 85vh;">
+                    <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 0, 0, 0.5);">
+                        <h5 class="display-4 fw-700 animate__animated animate__flipInX">First slide label</h5>
+                        <p class="fs-2 animate__animated animate__flipInX">Content for slide 1</p>
+                    </div>
+                </div>
+                <div class="carousel-item bg-cover" style="background-image: url(../images/scape/2.jpg); height: 85vh;">
+                    <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 0, 0, 0.5);">
+                        <h5 class="display-4 fw-700 animate__animated">Second slide label</h5>
+                        <p class="fs-2 animate__animated">Content for slide 2</p>
+                    </div>
+                </div>
+                <div class="carousel-item bg-cover" style="background-image: url(../images/scape/3.jpg); height: 85vh;">
+                    <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 0, 0, 0.5);">
+                        <h5 class="display-4 fw-700 animate__animated">Third slide label</h5>
+                        <p class="fs-2 animate__animated">Content for slide 3</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- S4 -->
+    <section id="S4">
+        <div class="row">
+            <div class="col-md-5 bg-cover" style="background-image: url(../images/scape/4.jpg); height: 500px;"></div>
+            <div class="col-md-7 ps-5 py-5">
+                <div class="h2">把你語音<span class="text-success fw-700">個人推薦</span></div>
+                <div class="h2 my-3">請大家當然，兩年減</div>
+                <p class="mb-1">命令是這樣運行平台，重複是他，提出傢俱</p>
+                <p class="mb-1">命令是這樣運行平台，重複是他，提出傢俱</p>
+                <p class="mb-1">命令是這樣運行平台，重複是他，提出傢俱</p>
+
+                <div class="row mt-5">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="bg-success bg-opacity-50 mt-3 p-2 rounded-2 shadow-lg">
+                            <div class="h4">AAAA</div>
+                            <div class="h4"><span class="text-primary h1 fw-700 counter01">50</span>/年</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="bg-success bg-opacity-50 mt-3 p-2 rounded-2 shadow-lg">
+                            <div class="h4">BBBB</div>
+                            <div class="h4"><span class="text-primary h1 fw-700 counter02">100</span>次</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="bg-success bg-opacity-50 mt-3 p-2 rounded-2 shadow-lg">
+                            <div class="h4">CCCC</div>
+                            <div class="h4"><span class="text-primary h1 fw-700 counter03">15</span>項</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="bg-success bg-opacity-50 mt-3 p-2 rounded-2 shadow-lg">
+                            <div class="h4">DDDD</div>
+                            <div class="h4"><span class="text-primary h1 fw-700 counter04">1000</span>+個</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S5 -->
+    <section id="S5" class="bg-cover py-5"
+        style="background-image: url(../images/scape/5.jpg); background-attachment: fixed;">
+        <div class="container">
+            <div class="display-2 text-center my-3 fw-700 text-warning">流程圖</div>
+            <div class="s5-timeline-section">
+                <div class="row align-items-center s5-timeline-section-pointer">
+                    <div class="col-md-6">
+                        <div class="h2 fw-700 text-light">1.First step</div>
+                        <p class="bg-secondary opacity-75 text-white p-3">
+                            網咖常常承受例如家人衝突主板申請團體收費以便，不用幾天至少手術不明白展開條例不良分別不要發生看到很多人，超級身邊身邊目的加盟理想你自己套件處於不得街道壓力版權所有，含有突破蘋果品種天地實用之下經營許可證，賓館被人規格支付保證你怎不來，微微第三大概合作，為。
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-cover" style="background-image: url(../images/pokemon/1.png); height: 260px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center flex-row-reverse s5-timeline-section-pointer">
+                    <div class="col-md-6">
+                        <div class="h2 fw-700 text-light">2.Second step</div>
+                        <p class="bg-secondary opacity-75 text-white p-3">
+                            網咖常常承受例如家人衝突主板申請團體收費以便，不用幾天至少手術不明白展開條例不良分別不要發生看到很多人，超級身邊身邊目的加盟理想你自己套件處於不得街道壓力版權所有，含有突破蘋果品種天地實用之下經營許可證，賓館被人規格支付保證你怎不來，微微第三大概合作，為。
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-cover" style="background-image: url(../images/pokemon/2.png); height: 260px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center s5-timeline-section-pointer">
+                    <div class="col-md-6">
+                        <div class="h2 fw-700 text-light">3.Third step</div>
+                        <p class="bg-secondary opacity-75 text-white p-3">
+                            網咖常常承受例如家人衝突主板申請團體收費以便，不用幾天至少手術不明白展開條例不良分別不要發生看到很多人，超級身邊身邊目的加盟理想你自己套件處於不得街道壓力版權所有，含有突破蘋果品種天地實用之下經營許可證，賓館被人規格支付保證你怎不來，微微第三大概合作，為。
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-cover" style="background-image: url(../images/pokemon/3.png); height: 260px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center flex-row-reverse s5-timeline-section-pointer">
+                    <div class="col-md-6">
+                        <div class="h2 fw-700 text-light">4.Forth step</div>
+                        <p class="bg-secondary opacity-75 text-white p-3">
+                            網咖常常承受例如家人衝突主板申請團體收費以便，不用幾天至少手術不明白展開條例不良分別不要發生看到很多人，超級身邊身邊目的加盟理想你自己套件處於不得街道壓力版權所有，含有突破蘋果品種天地實用之下經營許可證，賓館被人規格支付保證你怎不來，微微第三大概合作，為。
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-cover" style="background-image: url(../images/pokemon/4.png); height: 260px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="S6" class="bg-info py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center roller">
+                    <div class="roller_box-r">
+
+                    </div>
+                    <i class="fa-solid fa-pen-fancy fa-8x text-primary"></i>
+                    <div class="h1 fw-700 my-3">標語01</div>
+                    <p class="fs-5 text-white">
+                        然而奇怪雲林畫面突出事務沒人更是受到連續能在大家都中文版不是，面向新浪臨時股票從事人士生命性感免費版，興奮騎士共享社區，問道推進評論治理也就是上升貼圖股票話題，心靈數量不是很聯繫電話內容簡介，擁有圖像化所在地溫暖普遍上下，義務加油學校常見只需臉上，喜歡歡。
+                    </p>
+                </div>
+                <div class="col-md-4 text-center roller">
+                    <div class="roller_box-u">
+
+                    </div>
+                    <i class="fa-solid fa-eraser fa-8x text-primary"></i>
+                    <div class="h1 fw-700 my-3">標語02</div>
+                    <p class="fs-5 text-white">
+                        然而奇怪雲林畫面突出事務沒人更是受到連續能在大家都中文版不是，面向新浪臨時股票從事人士生命性感免費版，興奮騎士共享社區，問道推進評論治理也就是上升貼圖股票話題，心靈數量不是很聯繫電話內容簡介，擁有圖像化所在地溫暖普遍上下，義務加油學校常見只需臉上，喜歡歡。
+                    </p>
+                </div>
+                <div class="col-md-4 text-center roller">
+                    <div class="roller_box-l">
+
+                    </div>
+                    <i class="fa-solid fa-file-signature fa-8x text-primary"></i>
+                    <div class="h1 fw-700 my-3">標語03</div>
+                    <p class="fs-5 text-white">
+                        然而奇怪雲林畫面突出事務沒人更是受到連續能在大家都中文版不是，面向新浪臨時股票從事人士生命性感免費版，興奮騎士共享社區，問道推進評論治理也就是上升貼圖股票話題，心靈數量不是很聯繫電話內容簡介，擁有圖像化所在地溫暖普遍上下，義務加油學校常見只需臉上，喜歡歡。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="S7" class="position-relative">
+        <div class="row">
+            <div class="col-md-5 position-absolute top-0 bottom-0 bg-cover"
+                style="background-image: url(../images/palworld.jpg);"></div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-md-7 S7-text">
+                    <div class="h2 text-info my-3 fw-700 text-center">標題7-1</div>
+                    <p class="fs-4">
+                        忘記魔法俱樂部，他不有些編輯，需要級別以來回到發生顯得思考每一個，網際快車站在從而指南更加搜尋引擎一方面章節擔任閲讀，主任招生財經左右作業完整感動一路我在突出永遠大盤，吸收經營穩定禮物暫無永遠美麗分為神話為了多媒體幾年，儘快擁有孤獨投票職位解壓密碼幫忙夏。
+                    </p>
+                    <button class="btn btn-outline-info my-3">查看更多</button>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="h3">標題7-2</div>
+                            <p class="fs-5">房產分鐘一絲，最近違反，網路否則你可以，如下這次不承擔工資，是啊幾乎等待由於背後一方面，及時還在這。</p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="h3">標題7-3</div>
+                            <p class="fs-5">房產分鐘一絲，最近違反，網路否則你可以，如下這次不承擔工資，是啊幾乎等待由於背後一方面，及時還在這。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="S8">
+        <div class="container">
+            <div class="display-2 text-center fw-700 my-3 text-warning">人物介紹</div>
+            <div class="row" id="s8-userList">
+            </div>
+        </div>
+    </section>
+
+    <section id="S9" class="bg-light mt-4 position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 S9-text">
+                    <dl class="row">
+                        <dt class="col-sm-3">描述列表 (DL)</dt>
+                        <dd class="col-sm-9">描述列表非常適合用於定義專有名詞或列出屬性項目。</dd>
+
+                        <dt class="col-sm-3">核心術語</dt>
+                        <dd class="col-sm-9">
+                            <p>這是該術語的詳細定義說明。</p>
+                            <p>這裡可以放置更多的補充文字，用來解釋更深層的內容或背景資訊。</p>
+                        </dd>
+
+                        <dt class="col-sm-3">另一個術語</dt>
+                        <dd class="col-sm-9">這個定義比較簡短，因此不需要額外的段落標籤或其他複雜結構。</dd>
+
+                        <dt class="col-sm-3 text-truncate">這是一個字數非常多且會被截斷的術語名稱</dt>
+                        <dd class="col-sm-9">當空間有限時，這個功能非常有用。它會在文字末尾自動添加省略號。</dd>
+
+                        <dt class="col-sm-3">嵌套結構</dt>
+                        <dd class="col-sm-9">
+                            <dl class="row">
+                                <dt class="col-sm-4">嵌套描述列表</dt>
+                                <dd class="col-sm-8">聽說你喜歡描述列表，所以我們在描述列表裡面又放了一個描述列表。</dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-md-5 position-absolute top-0 bottom-0 bg-cover"
+                style="background-image: url(../images/premium_photo-1693723595870-2b8bad09b4c2.avif);"></div>
+        </div>
+    </section>
+
+    <section id="S10">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <iframe src="https://pbs.twimg.com/media/G6KM9ymaQAARwCE.jpg" width="100%" height="450"
+                        style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="" class="form-label">姓名</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">電話</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">人數</label>
+                        <input type="number" class="form-control">
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input">
+                        <label for="" name="rad01" class="form-check-label">需要訂餐</label>
+                    </div>
+                    <div class="mb-3 form-check form-check-inline">
+                        <input type="radio" class="form-check-input">
+                        <label for="" name="rad01" class="form-check-label">不需要訂餐</label>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary w-100 mb-2">取消</button>
+                        <button class="btn btn-primary w-100">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="S11">
+        <div class="row">
+            <div class="col-md-6 bg-cover" style="background-image: url(../images/scape/6.jpg);">
+                <div class="row">
+                    <div class="col-md-8 p-3 m-5 bg-secondary opacity-75 text-white rounded-3 shadow-lg">
+                        <small class="text-bg-danger badge">加入我們</small>
+                        <div class="h2 fw-700 text-white">XX人員一名</div>
+                        <p>薪資待遇: OOOOO/月</p>
+                        <p>工作內容: 怪物諮詢，判斷僅供堅持，明確運行金融例如看法鑒定應用再也新臺幣兩位停止圍繞常見。</p>
+                        <a href="#" class="btn btn-danger w-100">詳細內容</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 bg-cover" style="background-image: url(../images/scape/7.jpg);">
+                <div class="row">
+                    <div class="col-md-8 p-3 m-5 bg-secondary opacity-75 text-white rounded-3 shadow-lg">
+                        <small class="text-bg-danger badge">加入我們</small>
+                        <div class="h2 fw-700 text-white">YY人員一名</div>
+                        <p>薪資待遇: ooooo/月</p>
+                        <p>工作內容: 體驗清晰搜尋麻煩看到上一頁，投訴四個忍不住剛才美麗不斷你不寶貝電池主板，預期獨特鼓勵，見。</p>
+                        <a href="#" class="btn btn-danger w-100">詳細內容</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="S12">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a href="#" class="nav-link disabled fw-700 text-dark">POWER BY XXX 2026.04.14</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">友站01</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">友站02</a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- registerModal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header text-bg-warning">
+                    <h1 class="modal-title fs-5 h1" id="exampleModalLabel">會員註冊</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="h3">會員條款:</div>
+                            <p>會員守則1</p>
+                            <p>會員守則2</p>
+                            <p>會員守則3</p>
+                            <p>會員守則4</p>
+                            <p>會員守則5</p>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="" class="form-label">帳號</label>
+                                <input type="text" class="form-control" id="r-modal-username" placeholder="帳號字數6~10">
+                                <div class="valid-feedback">輸入符合規定</div>
+                                <div class="invalid-feedback">輸入不符合規定(帳號字數6~10)</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">密碼</label>
+                                <input type="text" class="form-control" id="r-modal-password" placeholder="密碼字數8~16">
+                                <div class="valid-feedback">輸入符合規定</div>
+                                <div class="invalid-feedback">輸入不符合規定(密碼字數8~16)</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">確認密碼</label>
+                                <input type="text" class="form-control" id="r-modal-repassword" placeholder="再次輸入密碼">
+                                <div class="valid-feedback">輸入符合規定</div>
+                                <div class="invalid-feedback">需與先前輸入密碼相同</div>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="agree-check">
+                                <label for="" class="form-check-label">同意</label>
+                            </div>
+                        </div>
+                    </div會員守則1
+                <div class="modal-footer">
+                    <a href="#" class="me-auto text-decoration-none" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">已有帳號</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="r-modal-ok-btn" disabled>確認</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6 col-lg-4 col-xl-3">
-            <div class="content_box roller">
-                <div class="roller_box-r">
-                    <a href="HTML/0205-practice.html" target="_blank"><button class="btn btn-dark">查看更多</button></a>
+    <!-- loginModal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-bg-success">
+                    <h1 class="modal-title fs-5 h1" id="exampleModalLabel">會員登入</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div
-                    style="background-image: url('images/Croajiro.webp'); height: 160px; background-position: center center; background-size: cover; border-radius: 5px;">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="" class="form-label">帳號</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">密碼</label>
+                        <input type="text" class="form-control">
+                    </div>
                 </div>
-                <div class="h3 text-center fw-700">作品集1</div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4 col-xl-3">
-            <div class="content_box roller">
-                <div class="roller_box-r">
-                    <a href="HTML/0210-ex3.html" target="_blank"><button class="btn btn-dark">查看更多</button></a>
+                <div class="modal-footer">
+                    <a href="#" class="me-auto text-decoration-none" data-bs-toggle="modal"
+                        data-bs-target="#registerModal">尚未有帳號</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">確認</button>
                 </div>
-                <div
-                    style="background-image: url('images/Killamari.webp'); height: 160px; background-position: center center; background-size: cover; border-radius: 5px;">
-                </div>
-                <div class="h3 text-center fw-700">作品集2</div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4 col-xl-3">
-            <div class="content_box roller">
-                <div class="roller_box-r">
-                    <a href="HTML/0212-1.html" target="_blank"><button class="btn btn-dark">查看更多</button></a>
-                </div>
-                <div
-                    style="background-image: url('images/Mimog.webp'); height: 160px; background-position: center center; background-size: cover; border-radius: 5px;">
-                </div>
-                <div class="h3 text-center fw-700">作品集3</div>
             </div>
         </div>
     </div>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-4.0.0.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-4.0.0.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
+    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js">	</script>
+    <script src="https://unpkg.com/axios@1.13.2/dist/axios.min.js"></script>
+    <script src="../js/wow.min.js"></script>
 
+    <script>
+
+        const myCarousel = document.getElementById('carouselExampleCaptions');
+
+        // 當輪播「即將切換」時觸發
+        myCarousel.addEventListener('slide.bs.carousel', function (e) {
+            // 找出即將顯示的那一張 (e.relatedTarget)
+            const activeCaptionElements = e.relatedTarget.querySelectorAll('.animate__animated');
+
+            // 先移除動畫類別，確保下次可以重新觸發
+            activeCaptionElements.forEach(el => {
+                el.classList.remove('animate__flipInX');
+            });
+        });
+
+        // 當輪播「切換完成」後觸發
+        myCarousel.addEventListener('slid.bs.carousel', function (e) {
+            // 找出當前顯示的那一張
+            const activeCaptionElements = e.currentTarget.querySelector('.carousel-item.active').querySelectorAll('.animate__animated');
+
+            // 重新加上動畫類別
+            activeCaptionElements.forEach(el => {
+                // 強制重繪 (Reflow) 讓動畫能再次執行
+                void el.offsetWidth;
+                el.classList.add('animate__flipInX');
+            });
+        });
+
+        let flag_username = false;
+        let flag_password = false;
+        let flag_repassword = false;
+
+        const okBtn = document.getElementById('r-modal-ok-btn');
+
+        $("#r-modal-username").blur(function () {
+            if ($(this).val().length > 5 && $(this).val().length < 11) {
+                // 符合規定
+                $(this).removeClass("is-invalid").addClass("is-valid");
+                flag_username = true;
+            }
+            else {
+                // 不符合規定
+                $(this).removeClass("is-valid").addClass("is-invalid");
+                flag_username = false;
+            }
+        });
+
+        $("#r-modal-password").blur(function () {
+
+            $("#r-modal-repassword").removeClass("is-valid").addClass("is-invalid");
+            flag_repassword = false;
+
+            if ($(this).val().length > 7 && $(this).val().length < 17) {
+                // 符合規定
+                $(this).removeClass("is-invalid").addClass("is-valid");
+                flag_password = true;
+            }
+            else {
+                // 不符合規定
+                $(this).removeClass("is-valid").addClass("is-invalid");
+                flag_password = false;
+            }
+        });
+
+        $("#r-modal-repassword").blur(function () {
+            if ($(this).val() == $("#r-modal-password").val() && $(this).val() != "") {
+                // 符合規定
+                $(this).removeClass("is-invalid").addClass("is-valid");
+                flag_repassword = true;
+            }
+            else {
+                // 不符合規定
+                $(this).removeClass("is-valid").addClass("is-invalid");
+                flag_repassword = false;
+            }
+        });
+
+        $("#agree-check").change(function () {
+            if (this.checked) {
+                okBtn.disabled = false;
+            } else {
+                okBtn.disabled = true;
+            }
+        })
+
+        $("#r-modal-ok-btn").click(function () {
+            if (flag_username && flag_password && flag_repassword) {
+                let jsonData = {
+                    username: $("#r-modal-username").val(),
+                    password: $("#r-modal-password").val()
+                }
+
+                axios.post('http://127.0.0.1:5000/api/register', jsonData)
+                    .then(function (response) {
+                        if (response.request.status == 200) {
+                            Swal.fire({
+                                title: "註冊成功",
+                                showDenyButton: false,
+                                showCancelButton: false,
+                                confirmButtonText: "確認",
+                                denyButtonText: `Don't save`
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    bootstrap.Modal.getOrCreateInstance("#registerModal").hide();
+                                }
+                            });
+                        }
+                    })
+            }
+            else {
+                Swal.fire({
+                    title: "註冊欄位有誤",
+                    icon: "error"
+                });
+            }
+        })
+
+        $(function () {
+            const counterUp = window.counterUp.default
+
+            const callback = entries => {
+                entries.forEach(entry => {
+                    const el = entry.target
+                    if (entry.isIntersecting && !el.classList.contains('is-visible')) {
+                        counterUp(el, {
+                            duration: 3000,
+                            delay: 16,
+                        })
+                        el.classList.add('is-visible')
+                    }
+                })
+            }
+            const IO = new IntersectionObserver(callback, { threshold: 1 })
+
+            const el01 = document.querySelector('.counter01')
+            IO.observe(el01)
+            const el02 = document.querySelector('.counter02')
+            IO.observe(el02)
+            const el03 = document.querySelector('.counter03')
+            IO.observe(el03)
+            const el04 = document.querySelector('.counter04')
+            IO.observe(el04)
+
+            $.ajax({
+                url: 'https://randomuser.me/api/?results=12',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data.results);
+                    data.results.forEach(function (item) {
+                        let strHTML = `<div class="col-sm-6 col-xl-3 mt-3">
+                                        <div class="d-flex">
+                                        <img src="${item.picture.large}" class="s8-userimg me-4" alt=""><div>
+                                        <div class="h2">${item.name.title}${item.name.first}</div>
+                                        <p class="h5">稱呼: XXXX</p>
+                                        <p class="h5">專項: YYYYYYYY</p>
+                                        </div></div></div>`;
+                        $("#s8-userList").append(strHTML);
+                    })
+                }
+            });
+
+            new WOW().init();
+
+        });
+    </script>
 </body>
 
 </html>

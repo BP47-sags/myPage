@@ -1,0 +1,7 @@
+git status
+git add .
+git commit -m "相關備註解釋"
+git branch -M main
+git remote add origin https://github.com/BP47-sags/myPage.git
+git push -u origin main
+git push
